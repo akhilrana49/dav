@@ -1,0 +1,42 @@
+df=pd.DataFrame(np.random.randint(0,100,size=(50,3))) nn=(int)((10/100)*(50*3))
+for x in range(0,nn,1): i=np.random.randint(50) j=np.random.randint(3) if(df.iloc[i,j]!=np.nan):
+df.iat[i,j]=np.nan
+print(df)
+
+#a Identify and count missing values in a dataframe.
+print("Total NAN : ",df.isnull().sum().sum())
+
+#b Drop the column having more than 5 null values.
+for col in df.columns: print(col,df[col].isnull().sum()) df.dropna(axis = 1,thresh=(df.shape[0]-5))
+
+#c. Identify the row label having maximum of the sum of all values in a row and drop that row.
+sum=df.sum(axis=1)
+print("SUM OF DATAFRAME ROW-WISE :\n", sum)
+print("\n MAXIMUM SUM OF ROW ELEMENTS IS :",sum.max())
+max_sum_index = df.sum(axis=1).idxmax()
+print("\nIndex of row having maximum sum is :" ,max_sum_index) df = df.drop(max_sum_index ,axis =0)
+print("\nDATAFRAME AFTER REMOVING THE ROW WITH INDEX ", max_sum_index ," , THAT HAD MAXIMUM SUM VALUE")
+df
+
+#d. Sort the dataframe on the basis of the first column. #Sorting dataframe by first column (i.e. 0 index column-wise) sort_dataframe=df.sort_values(0)
+sort_dataframe
+
+#e Remove all duplicates from the first column.
+#dropping all duplicate rows and keeping the last one among them
+df =df.drop_duplicates(subset=0,keep = "last") print(df)
+
+#f. Find the correlation between first and second column and covariance between second and third
+#column.
+correlation = df[0].corr(df[1])
+print("CORRELATION between first and second column : ", correlation) covariance = df[1].cov(df[2])
+print("COVARIANCE between second and third column :",covariance)
+
+#g. Detect the outliers and remove the rows having outliers.
+#the observed data is plotted into a box diagram to analyse values too scatered from the normal data i.e. outliners of the graph
+df.plot.box()
+
+
+#h.Discretize second column and create 5 bins
+df1 = pd.cut(df[1],bins=5)
+ 
+df1

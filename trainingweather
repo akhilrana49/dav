@@ -1,0 +1,18 @@
+datafile=pd.read_csv("DailyDelhiClimateTest.csv") print(datafile)from datetime
+import datetime
+
+#1. Compute mean of a series grouped by another series
+
+print(datafile.groupby(pd.DatetimeIndex(datafile['date']).month).wind_speed.mean())
+
+#2. Fill an intermittent time series to replace all missing dates with values of previous non-missing date.
+ 
+print(datafile.ffill())
+
+#3. Perform appropriate year-month string to dates conversion.
+
+style='2020-05' datetime.strptime(style, '%Y-%m')
+#4. Split a dataset to group by two columns and then sort the aggregated results within the groups
+
+.grp=datafile.groupby(["humidity","wind_speed"]).size().sort_values(ascending=True)   #here the inplace of actual data in column there frequencies matter for sorting print("sorted colulums:\n",grp)
+#5. Split a given dataframe into groups with bin counts datafile_col=pd.cut(datafile.wind_speed,3) print("datafile_col:\n",datafile_col)group=datafile.groupby([datafile.humidity,datafile_col])   print("group:\n",group.size().unstack())

@@ -1,0 +1,40 @@
+print("PART_A")
+#creating a two dimensional array with random integers between 1 to 100 with the dimension of 5*3
+arr2d = np.random.randint(1,100,(5,3)) arr2d
+#Computing the mean, standard deviation, and variance along the second axis
+(axis=1) #mean
+print('Mean of the array elements : ',arr2d.mean(axis=1))
+#standard deviation
+print('Standard Deviation of the array elements: ',arr2d.std(axis=1))
+#variance
+print('Variance of the array elements: ',arr2d.var(axis=1))
+
+#b.Get the indices of the sorted elements of a given array # B = [56, 48, 22, 41, 78, 91, 24, 46, 8, 33]
+print("\nPART_B")
+#given 1-d array
+ 
+B = [56, 48, 22, 41, 78, 91, 24, 46, 8, 33]
+print("Sorted array elements : ",np.sort(B))
+print("Indices of the sorted elements of the given array: ",np.argsort(B))
+
+#c.Create a 2-dimensional array of size m x n integer elements, also print the shape, type and data
+#type of the array and then reshape it into nx m array, n and m are user inputs given at the run time.
+print("\nPART_C")
+#Creating a 2-dimensional array of size row x column integer elements
+row = int(input('Enter rows : ')) col = int(input('Enter columns: '))
+arr1 = np.random.randint(1,100,(row,col)) print(arr1)
+#Shape i.e dimensions of the array
+print('Shape: ',arr1.shape) # type of data print('Type: ',type(arr1)) # type of elements of array
+print('Data Type: ',arr1.dtype)
+# reshaping array from its original dimensions to column X row format
+arr2 = arr1.reshape(col,row) print('After reshaping: \n',arr2) print('New Shape: ',arr2.shape)
+
+#d Test whether the elements of a given array are zero, non-zero and NaN.
+Record the indices of
+#these elements in three separate arrays.
+print("\nPART_D")
+arr3= np.array([1, 0, 3, 4 , np.nan, 11 , 0 , -1 , np.nan , 0]) print("Array taken : ",arr3)
+result1 = np.where(arr3 == 0)[0]
+print("The index of the zero elements is :: ",result1) result2 = np.where(arr3 != 0)[0]
+print("The index of the non- zero elements is :: ",result2) result3 = np.where(np.isnan(arr3) == True)[0]
+print("The index of the elements with NAN as element is :: ",result3)

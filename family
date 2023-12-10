@@ -1,0 +1,24 @@
+data =[['Shah' ,'Male' ,114000.00], ['Vats', 'Male', 65000.00], ['Vats', 'Female', 43150.00], ['Kumar' ,'Female'
+,69500.00],['Vats' ,'Female' ,155000.00], ['Kumar','Male',103000.00],['Shah','Male',55000.00],['Shah','Female',112400.00],['Kumar','Female',81030.00],['Vats','Male',71900.00]]
+
+family=pd.DataFrame(data, columns=['Name','Gender','MonthlyIncome']) 
+print("Family chart:\n",family)
+
+
+#a. Calculate and display family wise gross monthly income. 
+gross_income=family.groupby('Name').MonthlyIncome.sum()  print("Gross income:\n",gross_income)
+
+
+#b. Calculate and display the member with the highest monthly income in a family.
+
+highest_income_member=family.groupby("Name").max() print("Memeber with highest income:\n",highest_income_member)
+
+
+#c. Calculate and display monthly income of all members with income greater than Rs. 60000.00.
+
+income=family.loc[family.MonthlyIncome>60000,"MonthlyIncome"]  print("Monthly income greater then 60000:\n",income)
+
+
+#d. Calculate and display the average monthly income of the female members in the Shah family
+
+shah=family.loc[family.Name=="Shah"] fem=shah.loc[shah.Gender=="Female"] avg_inc=fem.groupby(fem.Gender=="Female").mean() print(avg_inc)

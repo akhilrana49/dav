@@ -1,0 +1,14 @@
+file1=pd.read_csv("Q7DAV.csv") 
+print("Provided File Data:\n",file1)
+#1.Perform one hot encoding of the last two columns of categorical data using the get_dummies() function
+
+print(pd.get_dummies(data=file1,columns=['Gender','Pass_Division']))
+
+#2.Sort this data frame on the “Birth Month” column (i.e. January to December). Hint: Convert Month to # Categorical
+ 
+.month_ordering=["January","February","March","April","May","June","July","August","September","October","Nov    ember","December"]
+months=lambdax:x[0].upper() 
+date=pd.Categorical(file1['Birth_Month'],categories=month_ordering,ordered=True)   
+print(date)
+file1["Birth_Month"] = date 
+file1.sort_values("Birth_Month")

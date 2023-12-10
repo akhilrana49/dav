@@ -1,0 +1,7 @@
+Dict1 = {"Girls": [72, 68, 70, 69, 74], 'Boys':[63, 65, 69, 62, 61]}
+#creating new empty list
+list1= []
+for x in range (0,5):
+temp={} temp["Girls"]=Dict1["Girls"][x]
+temp["Boys"]=Dict1["Boys"][x] list1.append(temp)
+print(list1)
